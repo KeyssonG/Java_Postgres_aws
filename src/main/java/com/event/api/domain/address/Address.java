@@ -3,11 +3,19 @@ package com.event.api.domain.address;
 
 import com.event.api.domain.event.Event;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @Table(name = "address")
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
     @Id
     @GeneratedValue
@@ -17,7 +25,7 @@ public class Address {
 
     private String uf;
 
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name = "event_id")
     private Event event;
 }
