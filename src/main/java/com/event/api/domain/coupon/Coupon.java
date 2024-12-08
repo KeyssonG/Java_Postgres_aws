@@ -1,5 +1,6 @@
 package com.event.api.domain.coupon;
 
+import com.event.api.domain.event.Event;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Table(name = "coupon")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +27,7 @@ public class Coupon {
 
     private Date valid;
 
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name = "event_id")
-    private String event;
+    private Event event;
 }
